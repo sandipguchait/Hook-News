@@ -10,10 +10,11 @@ const App = () => {
   const searchInputRef = useRef();
 
   useEffect(() => {
-        getData();
+      getResults();
+      document.title = "Hook News"
   }, []);
 
-  const getData = async () => {
+  const getResults = async () => {
     setLoading(true);
     try {
       const response = await axios.get(`http://hn.algolia.com/api/v1/search?query=${query}`)
@@ -26,7 +27,7 @@ const App = () => {
 
   const handleSearch = event => {
     event.preventDefault();
-    getData();  
+    getResults();  
   };
 
   const handleClearSearch = () => {
